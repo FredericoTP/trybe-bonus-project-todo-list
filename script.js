@@ -24,6 +24,7 @@ buttonCriarTarefa.innerText = 'Criar tarefa';
 function createLi() {
   const inputText = document.getElementById('texto-tarefa').value;
   const createLi = document.createElement('li');
+  createLi.className = 'task';
   const orderedList = document.getElementById('lista-tarefas');
   createLi.innerText = inputText;
   orderedList.appendChild(createLi);
@@ -31,10 +32,26 @@ function createLi() {
 
 function buttonCreateLi() {
   const button = document.getElementById('criar-tarefa');
-  button.addEventListener('click', function(event) {
+  button.addEventListener('click', function (event) {
     event.target = createLi();
     event.target = document.getElementById('texto-tarefa').value = '';
+    liRecebeClick();
   });
 }
 
-buttonCreateLi()
+buttonCreateLi();
+
+function recebeClick(event) {
+  const listSelected = document.querySelectorAll('.task');
+  for (let index = 0; index < listSelected.length; index += 1) {
+    listSelected[index].classList.remove('selected');
+    event.target.classList.add('selected');
+  }
+}
+
+function liRecebeClick() {
+  const li = document.getElementsByClassName('task');
+  for (let index = 0; index < li.length; index += 1) {
+    li[index].addEventListener('click', recebeClick);
+  }
+}
