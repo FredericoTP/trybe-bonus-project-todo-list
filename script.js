@@ -36,6 +36,7 @@ function buttonCreateLi() {
     event.target = createLi();
     event.target = document.getElementById('texto-tarefa').value = '';
     liRecebeClick();
+    liRecebeDblClick();
   });
 }
 
@@ -55,3 +56,23 @@ function liRecebeClick() {
     li[index].addEventListener('click', recebeClick);
   }
 }
+
+function recebeDblClick(event) {
+  const listSelected = document.querySelectorAll('.task');
+  for (let index = 0; index <= listSelected.length; index += 1) {
+    if (event.target.classList.contains('completed')) {
+      event.target.classList.remove('completed');
+    } else {
+      event.target.classList.add('completed');
+    }
+  }
+}
+
+function liRecebeDblClick() {
+  const li = document.getElementsByClassName('task');
+  for (let index = 0; index < li.length; index += 1) {
+    li[index].addEventListener('dblclick', recebeDblClick);
+  }
+}
+
+liRecebeDblClick();
