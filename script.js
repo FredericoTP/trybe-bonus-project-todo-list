@@ -1,6 +1,7 @@
 const mainContent = document.getElementById('main-content');
 const sectionList = document.getElementById('list');
 const sectionAddItem = document.getElementById('add-item');
+const sectionButtons = document.getElementById('buttons');
 
 function createOrderedList(local, id) {
   const createOrderedList = document.createElement('ol');
@@ -17,9 +18,13 @@ function createButton(local, id) {
 }
 
 createButton(sectionAddItem, 'criar-tarefa');
+createButton(sectionButtons, 'apaga-tudo');
 
 const buttonCriarTarefa = document.getElementById('criar-tarefa');
 buttonCriarTarefa.innerText = 'Criar tarefa';
+
+const buttonApagatudo = document.getElementById('apaga-tudo');
+buttonApagatudo.innerText = 'Apagar tudo';
 
 function createLi() {
   const inputText = document.getElementById('texto-tarefa').value;
@@ -37,6 +42,7 @@ function buttonCreateLi() {
     event.target = document.getElementById('texto-tarefa').value = '';
     liRecebeClick();
     liRecebeDblClick();
+    buttonApagaTudo();
   });
 }
 
@@ -76,3 +82,18 @@ function liRecebeDblClick() {
 }
 
 liRecebeDblClick();
+
+function deleteChild() {
+  const list = document.getElementsByClassName('task');
+  for (let index = 0; index < list.length; index += 1) {
+    list[index].remove();
+  }
+  
+}
+
+function buttonApagaTudo() {
+  const buttonApagaTudo = document.getElementById('apaga-tudo');
+  buttonApagaTudo.addEventListener('click', function (event) {
+    event.target = deleteChild();
+  });
+}
