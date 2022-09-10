@@ -4,6 +4,7 @@ const olListaTarefa = document.getElementById('lista-tarefas');
 const listItens = document.getElementsByTagName('li');
 const buttonApagaTudo = document.getElementById('apaga-tudo');
 const buttonRemoverFinalizados = document.getElementById('remover-finalizados');
+const buttonSalvarTarefas = document.getElementById('salvar-tarefas');
 
 function createElementLi() {
   const li = document.createElement('li');
@@ -69,3 +70,21 @@ buttonCriarTarefa.addEventListener('click', function(event) {
   buttonApagaCompleted();
 })
 
+function saveList() {
+  localStorage.setItem('lista', JSON.stringify(olListaTarefa.innerHTML));
+}
+
+buttonSalvarTarefas.addEventListener('click', function(event) {
+  event.target = saveList();
+});
+
+function initialize() {
+  const lista = localStorage.getItem('lista');
+  const listaStr = JSON.parse(lista);
+
+  if (lista) {
+    olListaTarefa.innerHTML = listaStr;
+  }
+}
+
+initialize();
