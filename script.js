@@ -7,6 +7,7 @@ const buttonRemoverFinalizados = document.getElementById('remover-finalizados');
 const buttonSalvarTarefas = document.getElementById('salvar-tarefas');
 const buttonMoverCima = document.getElementById('mover-cima');
 const buttonMoverBaixo = document.getElementById('mover-baixo');
+const buttonRemoverSelecionado = document.getElementById('remover-selecionado');
 
 function createElementLi() {
   const li = document.createElement('li');
@@ -129,4 +130,13 @@ function moverBaixo() {
 
 buttonMoverBaixo.addEventListener('click', function (event) {
   event.target = moverBaixo();
+})
+
+function deleteSelected() {
+  const selected = document.querySelector('.selected');
+  olListaTarefa.removeChild(selected);
+}
+
+buttonRemoverSelecionado.addEventListener('click', function(event) {
+  event.target = deleteSelected();
 })
