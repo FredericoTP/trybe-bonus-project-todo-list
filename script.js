@@ -1,99 +1,71 @@
-const mainContent = document.getElementById('main-content');
-const sectionList = document.getElementById('list');
-const sectionAddItem = document.getElementById('add-item');
-const sectionButtons = document.getElementById('buttons');
-
-function createOrderedList(local, id) {
-  const createOrderedList = document.createElement('ol');
-  createOrderedList.id = id;
-  local.appendChild(createOrderedList);
-}
-
-createOrderedList(sectionList, 'lista-tarefas');
-
-function createButton(local, id) {
-  const createButton = document.createElement('button');
-  createButton.id = id;
-  local.appendChild(createButton);
-}
-
-createButton(sectionAddItem, 'criar-tarefa');
-createButton(sectionButtons, 'apaga-tudo');
-
 const buttonCriarTarefa = document.getElementById('criar-tarefa');
-buttonCriarTarefa.innerText = 'Criar tarefa';
+const inputText = document.getElementById('texto-tarefa');
+const olListaTarefa = document.getElementById('lista-tarefas');
+const listItens = document.getElementsByTagName('li');
+const buttonApagaTudo = document.getElementById('apaga-tudo');
+const buttonRemoverFinalizados = document.getElementById('remover-finalizados');
 
-const buttonApagatudo = document.getElementById('apaga-tudo');
-buttonApagatudo.innerText = 'Apagar tudo';
-
-function createLi() {
-  const inputText = document.getElementById('texto-tarefa').value;
-  const createLi = document.createElement('li');
-  createLi.className = 'task';
-  const orderedList = document.getElementById('lista-tarefas');
-  createLi.innerText = inputText;
-  orderedList.appendChild(createLi);
+function createElementLi() {
+  const li = document.createElement('li');
+  li.innerText = inputText.value;
+  olListaTarefa.appendChild(li);
+  inputText.value = '';
 }
 
-function buttonCreateLi() {
-  const button = document.getElementById('criar-tarefa');
-  button.addEventListener('click', function (event) {
-    event.target = createLi();
-    event.target = document.getElementById('texto-tarefa').value = '';
-    liRecebeClick();
-    liRecebeDblClick();
-    buttonApagaTudo();
-  });
-}
-
-buttonCreateLi();
-
-function recebeClick(event) {
-  const listSelected = document.querySelectorAll('.task');
-  for (let index = 0; index < listSelected.length; index += 1) {
-    listSelected[index].classList.remove('selected');
+function addClassSelected(event) {
+  for (let index = 0; index < listItens.length; index += 1) {
+    listItens[index].classList.remove('selected');
     event.target.classList.add('selected');
   }
 }
 
-function liRecebeClick() {
-  const li = document.getElementsByClassName('task');
-  for (let index = 0; index < li.length; index += 1) {
-    li[index].addEventListener('click', recebeClick);
+function listItemClick() {
+  for (let index = 0; index < listItens.length; index += 1) {
+    listItens[index].addEventListener('click', addClassSelected);
   }
 }
 
-function recebeDblClick(event) {
-  const listSelected = document.querySelectorAll('.task');
-  for (let index = 0; index <= listSelected.length; index += 1) {
-    if (event.target.classList.contains('completed')) {
-      event.target.classList.remove('completed');
-    } else {
-      event.target.classList.add('completed');
-    }
-  }
+// classlist.toggle -> https://pt.stackoverflow.com/questions/492295/qual-a-diferen%C3%A7a-entre-usar-classname-classlist-toggle-e-classlist-add
+function addClassCompleted(event) {
+  event.target.classList.toggle('completed');
 }
 
-function liRecebeDblClick() {
-  const li = document.getElementsByClassName('task');
-  for (let index = 0; index < li.length; index += 1) {
-    li[index].addEventListener('dblclick', recebeDblClick);
+function listItemDblClick() {
+  for (let index = 0; index < listItens.length; index += 1) {
+    listItens[index].addEventListener('dblclick', addClassCompleted);
   }
 }
-
-liRecebeDblClick();
 
 function deleteChild() {
-  const list = document.getElementsByClassName('task');
-  for (let index = 0; index < list.length; index += 1) {
-    list[index].remove();
-  }
-  
+  for (let index = 0; index < listItens.length; index += 1) {
+    listItens[index].remove();
+  } 
 }
 
-function buttonApagaTudo() {
-  const buttonApagaTudo = document.getElementById('apaga-tudo');
+function buttonApaga() {
   buttonApagaTudo.addEventListener('click', function (event) {
     event.target = deleteChild();
   });
 }
+
+function deleteChildCompleted() {
+  const completed = document.getElementsByClassName('completed');
+  for (let index = 0; index < completed.length; index += 1) {
+    olListaTarefa.removeChild(completed[index]);
+  }
+}
+
+function buttonApagaCompleted() {
+  buttonRemoverFinalizados.addEventListener('click', function (event) {
+    event.target = deleteChildCompleted();
+  })
+}
+
+buttonCriarTarefa.addEventListener('click', function(event) {
+  event.target = createElementLi();
+  listItemClick();
+  listItemDblClick();
+  buttonApaga();
+  buttonApagaCompleted();
+})
+
