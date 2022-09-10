@@ -5,6 +5,8 @@ const listItens = document.getElementsByTagName('li');
 const buttonApagaTudo = document.getElementById('apaga-tudo');
 const buttonRemoverFinalizados = document.getElementById('remover-finalizados');
 const buttonSalvarTarefas = document.getElementById('salvar-tarefas');
+const buttonMoverCima = document.getElementById('mover-cima');
+const buttonMoverBaixo = document.getElementById('mover-baixo');
 
 function createElementLi() {
   const li = document.createElement('li');
@@ -40,7 +42,7 @@ function listItemDblClick() {
 function deleteChild() {
   for (let index = 0; index < listItens.length; index += 1) {
     listItens[index].remove();
-  } 
+  }
 }
 
 function buttonApaga() {
@@ -62,7 +64,7 @@ function buttonApagaCompleted() {
   })
 }
 
-buttonCriarTarefa.addEventListener('click', function(event) {
+buttonCriarTarefa.addEventListener('click', function (event) {
   event.target = createElementLi();
   listItemClick();
   listItemDblClick();
@@ -74,7 +76,7 @@ function saveList() {
   localStorage.setItem('lista', JSON.stringify(olListaTarefa.innerHTML));
 }
 
-buttonSalvarTarefas.addEventListener('click', function(event) {
+buttonSalvarTarefas.addEventListener('click', function (event) {
   event.target = saveList();
 });
 
@@ -88,3 +90,43 @@ function initialize() {
 }
 
 initialize();
+
+function moverCima() {
+  const selected = document.querySelector('.selected');
+  if (selected === null) {
+    alert('Selecione um item!');
+  } else if (selected !== null && selected.previousSibling !== null) {
+    const str = [];
+    str.push(selected.previousSibling.innerText);
+    selected.previousSibling.innerHTML = selected.innerHTML;
+    selected.classList.remove('selected');
+    selected.previousSibling.classList.add('selected');
+    selected.innerText = str;
+  } else {
+    alert('Não existe item para cima!');
+  }
+}
+
+buttonMoverCima.addEventListener('click', function (event) {
+  event.target = moverCima();
+})
+
+function moverBaixo() {
+  const selected = document.querySelector('.selected');
+  if (selected === null) {
+    alert('Selecione um item!');
+  } else if (selected !== null && selected.nextSibling !== null) {
+    const str = [];
+    str.push(selected.nextSibling.innerText);
+    selected.nextSibling.innerHTML = selected.innerHTML;
+    selected.classList.remove('selected');
+    selected.nextSibling.classList.add('selected');
+    selected.innerText = str;
+  } else {
+    alert('Não existe item para baixo!');
+  }
+}
+
+buttonMoverBaixo.addEventListener('click', function (event) {
+  event.target = moverBaixo();
+})
