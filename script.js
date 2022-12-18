@@ -42,7 +42,7 @@ function listItemDblClick() {
 
 function deleteChild() {
   for (let index = 0; index < listItens.length; index += 1) {
-    listItens[index].remove();
+    return listItens[index].remove();
   }
 }
 
@@ -62,7 +62,7 @@ function deleteChildCompleted() {
 function buttonApagaCompleted() {
   buttonRemoverFinalizados.addEventListener('click', function (event) {
     event.target = deleteChildCompleted();
-  })
+  });
 }
 
 buttonCriarTarefa.addEventListener('click', function (event) {
@@ -71,7 +71,7 @@ buttonCriarTarefa.addEventListener('click', function (event) {
   listItemDblClick();
   buttonApaga();
   buttonApagaCompleted();
-})
+});
 
 function saveList() {
   localStorage.setItem('lista', JSON.stringify(olListaTarefa.innerHTML));
@@ -110,7 +110,7 @@ function moverCima() {
 
 buttonMoverCima.addEventListener('click', function (event) {
   event.target = moverCima();
-})
+});
 
 function moverBaixo() {
   const selected = document.querySelector('.selected');
@@ -130,7 +130,7 @@ function moverBaixo() {
 
 buttonMoverBaixo.addEventListener('click', function (event) {
   event.target = moverBaixo();
-})
+});
 
 function deleteSelected() {
   const selected = document.querySelector('.selected');
@@ -139,4 +139,4 @@ function deleteSelected() {
 
 buttonRemoverSelecionado.addEventListener('click', function(event) {
   event.target = deleteSelected();
-})
+});
