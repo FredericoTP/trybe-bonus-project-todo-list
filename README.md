@@ -82,6 +82,8 @@ Nesse projeto foi desenvolvido uma lista de tarefas usando HTML, CSS e JavaScrip
 
 ## 100% :heavy_check_mark:
 
+![Project-Bonus-ToDo-List-Grade](https://github.com/FredericoTP/trybe-bonus-project-todo-list/blob/main/images/lista-de-tarefas-grade.png?raw=true)
+  
 <br />
 
 ## 3- Preview
