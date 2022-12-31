@@ -9,3 +9,61 @@
 .completed {
   text-decoration: line-through solid black;
 }
+
+body {
+  background-color: beige;
+}
+
+#header {
+  width: fit-content;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+#title-header {
+  background-color: black;
+  border-radius: 10px;
+  color: white;
+  margin: 20px 0;
+  padding: 10px;
+  text-align: center;
+  width: fit-content;
+}
+
+#funcionamento {
+  font-weight: 700;
+  text-align: center;
+  padding: 10px;
+}
+
+#create-itens-edit {
+  margin: 0 auto;
+  width: 90%;
+}
+
+#create-itens-edit button {
+  background-color: black;
+  border: 1px solid white;
+  color: white;
+  font-weight: 700;
+  padding: 5px;
+}
+
+#input-create {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px 0;
+}
+
+#input-edit {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#lista-tarefas {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 10px 0;
+}
