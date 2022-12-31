@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,23 +8,28 @@
   <title>ToDo List</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <header>
-    <h1>Minha Lista de Tarefas</h1>
+  <header id="header">
+    <h1 id="title-header">Minha Lista de Tarefas</h1>
   </header>
   <main>
     <section>
       <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
     </section>
-    <section>
-      <input id="texto-tarefa" type="text">
-      <button id="criar-tarefa">Criar tarefa</button>
-      <button id="apaga-tudo">Apagar lista</button>
-      <button id="remover-finalizados">Remover finalizados</button>
-      <button id="salvar-tarefas">Salvar</button>
-      <button id="mover-cima">/\</button>
-      <button id="mover-baixo">\/</button>
-      <button id="remover-selecionado">Remover item selecionado</button>
+    <section id="create-itens-edit">
+      <div id="input-create">
+        <input id="texto-tarefa" type="text">
+        <button id="criar-tarefa">Criar tarefa</button>
+      </div>
+      <div id="input-edit">
+        <button id="apaga-tudo">Apagar lista</button>
+        <button id="remover-finalizados">Remover finalizados</button>
+        <button id="salvar-tarefas">Salvar</button>
+        <button id="mover-cima">/\</button>
+        <button id="mover-baixo">\/</button>
+        <button id="remover-selecionado">Remover item selecionado</button>
+      </div>
     </section>
     <section>
       <ol id="lista-tarefas"></ol>
@@ -32,4 +38,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>
