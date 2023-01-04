@@ -1,10 +1,8 @@
-# :construction: README em construção ! :construction:
-
 # :computer: Trybe-Bonus-Project-ToDo-List :computer:
 
 Nesse projeto foi desenvolvido uma lista de tarefas usando HTML, CSS e JavaScript, onde é possível adicionar tarefas, mudar as posições, marcar como concluída, salvar e excluir.
 
-# Acesse o projeto clicando [aqui]()! :green_heart:
+# Acesse o projeto clicando [aqui](https://fredericotp.github.io/trybe-bonus-project-todo-list/)! :green_heart:
 
 <br />
 
@@ -87,3 +85,6 @@ Nesse projeto foi desenvolvido uma lista de tarefas usando HTML, CSS e JavaScrip
 <br />
 
 ## 3- Preview
+  
+![Project-Bonus-ToDo-List-Preview](https://github.com/FredericoTP/trybe-bonus-project-todo-list/blob/main/images/lista-de-tarefas-preview.png?raw=true)
+  
